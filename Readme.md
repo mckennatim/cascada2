@@ -27,7 +27,7 @@ The app is written in HTML5/javascript, resides on http://cascada.sitebuilt.net 
 
 <br/><small>back to [[electronics]] [[projects in process]]</small>
 
-==controlling the water level==
+== controlling the water level ==
 
 http://sitebuilt.net/images/water-control_circuit.JPG
 :comparators - LM324N quad op amp
