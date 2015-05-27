@@ -27,7 +27,7 @@ The app is written in HTML5/javascript, resides on http://cascada.sitebuilt.net 
 
 <br/><small>back to [[electronics]] [[projects in process]]</small>
 
-== controlling the water level ==
+### controlling the water level
 
 http://sitebuilt.net/images/water-control_circuit.JPG
 :comparators - LM324N quad op amp
@@ -40,21 +40,19 @@ For the bottom sensor, the -input was hard wired with an even voltage divider th
 The low level comparator goes HI when out of water and the high water sensor goes HI when immersed. The output of the low level comparator goes to the D input and the output of the high level comparator drives the clock. When the D flip flop output Q is HI the pump goes on.
 
 
-http://sitebuilt.net/images/D-flipflop74HC74AP_truth.PNG
-=====how the flip flop works=====
+##### how the flip flop works
 The flip flop was setup with <math>\overline{clr}</math> set to HI. Then, whenever a clock pulse goes HI, whatever is on the D input gets transferred to 'memory' and shows up on the Q output, EXCEPT, if <math>\overline{pre}</math> goes LO, it forces Q HI no matter what.  
 
-http://sitebuilt.net/images/water-control_TRUTH.JPG
-=====how this circuit works=====
+#### how this circuit works
 loop
 :The bottom sensor comparator is wired to the D and through a NOT gate to <math>\overline{pre}</math>. <math>\overline{pre}</math> forces Q HI when it is LO which only happens when the water level is below the low sensor. The HI turns the pump on.
-======rising water======
+##### rising water
 :Once the water reaches the lower sensor and forces it LO that LO on D just hangs there waiting to be transferred by a rising clock pulse. That doesn't happen until the water rises sufficiently so the high sensor is immersed. Then it sends a rising pulse to the clock which puts what's on the D input on the Q output. In this case that is a LO. So the output goes LO and the pump goes off.
 
-======falling water======
+##### falling water
 :When the water falls below the high limit sensor the pump stays off since when the high limit opens it sends the clock LO on a falling pulse which does not change Q (only a rising pulse does). So the pump stays off until it falls past the lower sensor. LOOP
 loop
-====revision====
+#### revision
 After using for awhile I decide to change the function a bit. As designed, when the switch was thrown to run the circulation pumps if the state of things was between high and low water then D saw a LO, and Clk saw a LO. When you flipped the switch that state caused the pump to come on, ie be HI. I decided I didn't like that, I'd be filling the pond when I didn't really need to and end up wasting water.
 
 So I had to change what happened on power up. If I could force a rising pulse on the clock I could drive it HI and since the lower sensor was LO it would transfer that LO from D to Q and keep the water relay off. Putting a capacitor between ground and the -input of the upper sensor comparator drove that pin to ground when the power came on (as the capacitor momentarily looked like a short) which sent a rising pulse to the CLK which transferred the LO on D to Q turning off the pump. When the capacitor charged then the -input went back to winning the comparison and sent the CLK LO which as we know has no effect on the Q output.
