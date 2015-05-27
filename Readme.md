@@ -26,6 +26,7 @@ The app is written in HTML5/javascript, resides on http://cascada.sitebuilt.net 
 
 
 <br/><small>back to [[electronics]] [[projects in process]]</small>
+
 ==controlling the water level==
 
 http://sitebuilt.net/images/water-control_circuit.JPG
@@ -153,6 +154,7 @@ Click the button pump goes on in pond.
 ====version 1====
 
 ====todo====
+
 Pick up my phone, go to a web site, have there be a series of buttons on, off, 10, 20, 30, 60.
 
 The idea was to automatically control the level of the pond by using a (cheap) lawn sprinkler relay to inject water into the pond when it falls below a critical level. Water gets added while the pumps are on until it reaches the max level then it goes off. If you turn on the pumps again it doesn't continue filling but waits to inject water til the water falls to the low water sensor. 
